@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Articles{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header>
+    <div class="logo">My Articles</div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="{% url 'article_list' %}">Articles</a>
+        <a href="/admin/">Admin</a>
+
+        {% if user.is_authenticated %}
+            <form class="logout-form" action="/accounts/logout/" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
+    </nav>
+</header>
+
+{% block content %}{% endblock content %}
+</body>
+</html>
