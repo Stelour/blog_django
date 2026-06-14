@@ -176,3 +176,46 @@ time {
         height: 220px;
     }
 }
+
+.form input,
+.form textarea,
+.form select {
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.form button,
+.logout-form button {
+    padding: 8px 14px;
+    background: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+@media (max-width: 760px) {
+    header {
+        padding: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    main,
+    .article-detail {
+        margin: 15px;
+        padding: 18px;
+    }
+
+    .article-detail img {
+        height: 220px;
+    }
+}

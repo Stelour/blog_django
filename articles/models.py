@@ -7,8 +7,8 @@ class Article(models.Model):
     slug = models.SlugField()
     body = models.TextField()
     date = models.DateField(auto_now_add=True)
-    thumbnail = models.ImageField(upload_to = 'articles/', null=True, blank=True)
-    # author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+    thumbnail = models.ImageField(upload_to = 'articles/', null=True, blank=True, default = 'images/default.jpg')
+    author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
