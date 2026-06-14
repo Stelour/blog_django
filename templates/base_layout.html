@@ -10,19 +10,19 @@
 <header>
     <div class="logo">My Articles</div>
     <nav>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="{% url 'article_list' %}">Articles</a>
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'homepage' %}">Articles</a>
         <a href="/admin/">Admin</a>
 
         {% if user.is_authenticated %}
-            <form class="logout-form" action="/accounts/logout/" method="post">
+            <form class="logout-form" action="{% url 'accounts:logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit">Logout</button>
             </form>
         {% else %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'signup' %}">Signup</a>
+            <a href="{% url 'accounts:login' %}">Login</a>
+            <a href="{% url 'accounts:signup' %}">Signup</a>
         {% endif %}
     </nav>
 </header>

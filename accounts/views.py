@@ -2,7 +2,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def signup_view(request):
@@ -12,7 +12,9 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return HttpResponseRedirect('/articles')
+            if 'next' in request.POST:
+                return redirect(request.POST['next'])
+            return redirect('homepage')
     else:
         form = UserCreationForm()
 
